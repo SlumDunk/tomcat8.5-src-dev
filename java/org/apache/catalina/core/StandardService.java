@@ -412,8 +412,9 @@ public class StandardService extends LifecycleMBeanBase implements Service {
     @Override
     protected void startInternal() throws LifecycleException {
 
-        if(log.isInfoEnabled())
+        if(log.isInfoEnabled()) {
             log.info(sm.getString("standardService.start.name", this.name));
+        }
         setState(LifecycleState.STARTING);
 
         // Start our defined Container first
@@ -552,8 +553,9 @@ public class StandardService extends LifecycleMBeanBase implements Service {
                             "standardService.connector.initFailed", connector);
                     log.error(message, e);
 
-                    if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE"))
+                    if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE")) {
                         throw new LifecycleException(message);
+                    }
                 }
             }
         }

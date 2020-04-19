@@ -54,8 +54,9 @@ public final class ApplicationFilterFactory {
             Wrapper wrapper, Servlet servlet) {
 
         // If there is no servlet to execute, return null
-        if (servlet == null)
+        if (servlet == null) {
             return null;
+        }
 
         // Create and initialize a filter chain object
         ApplicationFilterChain filterChain = null;
@@ -84,8 +85,9 @@ public final class ApplicationFilterFactory {
         FilterMap filterMaps[] = context.findFilterMaps();
 
         // If there are no filter mappings, we are done
-        if ((filterMaps == null) || (filterMaps.length == 0))
+        if ((filterMaps == null) || (filterMaps.length == 0)) {
             return (filterChain);
+        }
 
         // Acquire the information we will need to match filter mappings
         DispatcherType dispatcher =
@@ -104,8 +106,9 @@ public final class ApplicationFilterFactory {
             if (!matchDispatcher(filterMaps[i] ,dispatcher)) {
                 continue;
             }
-            if (!matchFiltersURL(filterMaps[i], requestPath))
+            if (!matchFiltersURL(filterMaps[i], requestPath)) {
                 continue;
+            }
             ApplicationFilterConfig filterConfig = (ApplicationFilterConfig)
                 context.findFilterConfig(filterMaps[i].getFilterName());
             if (filterConfig == null) {
@@ -120,8 +123,9 @@ public final class ApplicationFilterFactory {
             if (!matchDispatcher(filterMaps[i] ,dispatcher)) {
                 continue;
             }
-            if (!matchFiltersServlet(filterMaps[i], servletName))
+            if (!matchFiltersServlet(filterMaps[i], servletName)) {
                 continue;
+            }
             ApplicationFilterConfig filterConfig = (ApplicationFilterConfig)
                 context.findFilterConfig(filterMaps[i].getFilterName());
             if (filterConfig == null) {

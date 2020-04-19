@@ -1027,8 +1027,9 @@ public class StandardWrapper extends ContainerBase
     public synchronized Servlet loadServlet() throws ServletException {
 
         // Nothing to do if we already have an instance or an instance pool
-        if (!singleThreadModel && (instance != null))
+        if (!singleThreadModel && (instance != null)) {
             return instance;
+        }
 
         PrintStream out = System.out;
         if (swallowOutput) {
@@ -1298,8 +1299,9 @@ public class StandardWrapper extends ContainerBase
     public synchronized void unload() throws ServletException {
 
         // Nothing to do if we have never loaded the instance
-        if (!singleThreadModel && (instance == null))
+        if (!singleThreadModel && (instance == null)) {
             return;
+        }
         unloading = true;
 
         // Loaf a while if the current instance is allocated

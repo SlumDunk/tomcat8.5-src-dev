@@ -1056,8 +1056,9 @@ public class Digester extends DefaultHandler2 {
         }
         try {
             stack.pop();
-            if (stack.empty())
+            if (stack.empty()) {
                 namespaces.remove(prefix);
+            }
         } catch (EmptyStackException e) {
             throw createSAXException("endPrefixMapping popped too many times");
         }
@@ -1828,7 +1829,7 @@ public class Digester extends DefaultHandler2 {
      * @param object The new object
      */
     public void push(Object object) {
-
+        System.out.println("--------添加对象："+object.toString());
         if (stack.size() == 0) {
             root = object;
         }
